@@ -6,7 +6,7 @@ import {EventService} from 'src/app/apis/event.service'
   styleUrls: ['./events.component.css']
 })
 export class EventsComponent implements OnInit {
-
+  //rabek w heku nsitha 
   constructor(private service : EventService ) { }
   items;
   favoris =[];
