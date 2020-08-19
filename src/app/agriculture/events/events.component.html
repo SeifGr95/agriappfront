@@ -1,0 +1,50 @@
+<h2 class="block-title">News</h2>
+                    <ul class="list-group mb-4 media-list ">
+                        <li class="list-group-item" *ngFor="let element of items">
+                            <a (click)="showItem(element)" class="sidebar-close dropdown-item popup-open media shadow-15" data-toggle="modal" data-target="#fullscreenmenu" >
+                                <div class="w-auto h-100">
+                                    <figure class="avatar avatar-80"><img src="assets/img/user1.png" alt=""> </figure>
+                                </div>
+                                <div class="media-body">
+                                    <h5>{{element.title}} </h5>
+                                    <p class="small mb-2 text-secondary">Type: {{element.type}}</p>
+                                    <p>{{element.description}} </p>
+                                </div>
+                            </a>
+                        </li>
+                       
+                    </ul>
+
+                    <div *ngIf="selectedItem" class="modal fade popup-fullmenu" id="fullscreenmenu" tabindex="-1" role="dialog" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content ">
+                                <div class="modal-header">
+                                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                <div class="modal-body" >
+                                    <ul class="list-group mb-4 media-list ">
+                                        <li class="list-group-item">
+                                            
+                                                <div class="w-auto h-100">
+                                                    <figure class="avatar avatar-80"><img src="assets/img/user1.png" alt=""> </figure>
+                                                </div>
+                                                <div class="media-body">
+                                                    <h5>{{selectedItem.title}} </h5>
+                                                    <p class="small mb-2 text-secondary">Type: {{selectedItem.type}}</p>
+                                                    <p class="small mb-2 text-secondary"> <i class="fa fa-calendar"></i>Date: {{selectedItem.date}}</p>
+                                                    <p>{{selectedItem.description}} </p>
+                                                    <p>{{selectedItem.contenu}}</p>
+                                                </div>
+                                                <div class="media-footer">
+                                                    <i class="material-icons" (click)="setfavoris(selectedItem._id)"> {{isfavoris(selectedItem._id) ? 'star' : 'star_border'}} </i>
+                                                </div>
+                                            
+                                        </li>
+                                       
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>

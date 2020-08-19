@@ -1,0 +1,25 @@
+<div class="content-sticky-footer">
+    
+    
+    <h2 class="block-title">Summary</h2>                    
+    <div class="w-100">
+        <ul class="list-group mb-4 media-list" *ngFor="let element of produit">
+            <li class="list-group-item">
+                <a href="#" class="media shadow-15">
+                    <div class="w-auto h-100 mr-2">
+                        <div class="avatar avatar-80 gradient-success text-center"><i class="material-icons icon-3x">mail</i></div>
+                    </div>
+                    <div class="media-body">
+                        <p class="text-uppercase text-primary small mb-0">Success</p>
+                        <h3>{{element.title}}</h3>
+                        <h4 *ngFor="let part of element.parts">{{part.prix}} / {{part.unite}}</h4ng >
+                        <p>My view is to create greate things </p>
+                    </div>
+                </a>
+            </li>
+        </ul>
+     
+    </div>
+    
+  
+</div>
