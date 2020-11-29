@@ -1,0 +1,150 @@
+<div [ngClass]="show_form?'hide':'show'">
+  <div class="search">
+    <input placeholder="rechercher..." type="text" [(ngModel)]="search_txt" (ngModelChange)="search()" />
+    <button><i class="material-icons">search</i></button>
+
+  </div>
+  <div class="row" style="padding-left: 15px;">
+    <div class="col-md-4">
+      <select #selectlist name="secteur"  [(ngModel)]="secteur"  class="form-control" (change)="recuper()">
+        <option  *ngFor="let s of lisetSecteur">{{s.title}}</option>
+    
+      </select>
+    </div>
+    <div class="col-md-4"> 
+      <select  name="secteur" class="form-control" [(ngModel)]="specialite"  (change)="recuperSpecialite()" >
+        <option value="{{c._id}}" *ngFor="let c of listspecialite">{{c.title}}</option>
+    
+      </select>
+    </div>
+    <div class="col-md-4">
+      <select  name="secteur" [(ngModel)]="ville_exp" class="form-control" (change)="filterVille()">
+        <option  *ngFor="let s of list_ville">{{s}}</option>
+    
+      </select>
+    </div>
+  </div>
+ 
+
+  
+
+  <div class="expert-list">
+    <div *ngFor="let element of expert_list" class="list-item">
+
+      <div class="details_container">
+
+        <h5> Nom & Prenom:  {{element.firstname}} {{element.name}} </h5>
+        <h6>Ville : {{element.ville_exp}}</h6>
+        <p>Téléphone : {{element.tel_exp}}</p>
+        <p>Email : {{element.email}}</p>
+        
+        
+        <p *ngIf="element.Specialite">Spécialité : {{element.Specialite.title}}</p>
+        <button *ngIf="user && user.type=='agriculteur'" type="button" data-toggle="modal" data-target="#myModal"
+          class="btn btn-outline-info" (click)="selectExpert(element)">Demander un rendez vous</button>
+      </div>
+
+      <div *ngIf="user && user.type=='admin'" class="action_edit" (click)="showEditForm(element)"><i
+          class="material-icons">create</i></div>
+      <div *ngIf="user && user.type=='admin'" class="action_delete" (click)="delete(element._id)"><i
+          class="material-icons">delete</i></div>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="user && user.type=='admin'" [ngClass]="show_form?'show':'hide'" class="news-form">
+
+  <div class="form-group">
+    <label> Nom</label>
+    <input type="text" class="form-control  " [(ngModel)]="expert.name" required>
+  </div>
+  <div class="form-group">
+    <label> Prenom</label>
+    <input type="text" class="form-control   " [(ngModel)]="expert.firstname" required>
+  </div>
+  <div class="form-group">
+    <label> Email</label>
+    <input type="email" email="true" class="form-control  " [(ngModel)]="expert.email" required>
+  </div>
+  <div *ngIf="!is_update" class="form-group">
+    <label> Mot de passe</label>
+    <input type="password" class="form-control  " [(ngModel)]="expert.password" required minlength="6">
+  </div>
+  <div class="form-group">
+    <label> Téléphone</label>
+    <input type="text" class="form-control   " [(ngModel)]="expert.tel_exp" required>
+  </div>
+  <div class="form-group">
+    <label> Ville</label>
+    <input type="text" class="form-control   " [(ngModel)]="expert.ville_exp" required>
+  </div>
+
+  <div class="form-group">
+    <select #selectlist name="secteur" class="form-control" (change)="recuper(selectlist.value)">
+      <option *ngFor="let s of lisetSecteur">{{s.title}}</option>
+
+    </select>
+
+
+  </div>
+  <div class="form-group">
+    <select name="secteur" class="form-control" [(ngModel)]="expert.Specialite">
+      <option value="{{c._id}}" *ngFor="let c of listspecialite">{{c.title}}</option>
+
+    </select>
+
+
+  </div>
+
+  <button class="btn btn-block btn-agri" (click)="addOrUpdateNews()">{{btn_message}}</button>
+</div>
+
+
+<div class="modal" id="myModal">
+  <div class="modal-dialog">
+    <div class="modal-content">
+
+      <!-- Modal Header -->
+      <div class="modal-header">
+        <h4 class="modal-title">Demandez un rendez-vous </h4>
+        <button type="button" class="close" data-dismiss="modal">&times;</button>
+      </div>
+
+      <!-- Modal body -->
+      <div class="modal-body">
+
+        <div class="form-group">
+          <label> Date</label>
+          <div class="input-group">
+            <input class="form-control" placeholder="yyyy-mm-dd" name="dp" [(ngModel)]="dateModel" ngbDatepicker
+              #d="ngbDatepicker" [minDate]="today">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"> <i class="material-icons">
+                  event </i></button>
+            </div>
+          </div>
+        </div>
+        <div class="form-group">
+          <label> Téléphone </label>
+          <input type="text" class="form-control  " [(ngModel)]="rdv.lieu_rdv" required>
+        </div>
+
+        <!-- ajout d'une adresse et un telphone -->
+        <div class="form-group">
+          <label> Informations complémentaires </label>
+          <textarea class="form-control" [(ngModel)]="rdv.sujet_rdv" rows="3" required></textarea>
+        </div>
+      </div>
+
+      <!-- Modal footer -->
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Annuler</button>
+        <button type="button" class="btn btn-success" data-dismiss="modal" (click)="addRDV()">Ajouter</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<button *ngIf="user && user.type=='admin'" [ngClass]="show_form?'float-btn-hide':'float-btn'" class="float-btn"><i
+    class="material-icons" style="font-size: 36px;" (click)="showAddForm()">add</i></button>

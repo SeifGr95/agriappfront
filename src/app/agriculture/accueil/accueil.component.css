@@ -1,0 +1,13 @@
+.footer-heading {
+    font-size: 20px;
+    color: #1f1f1f; }
+.footer-para{
+    color: #f1f1f1;
+}
+footer{    background-color: #11d13a;
+    padding-top: 30px;
+}
+
+#content-row{
+    margin: 0 !important;
+}

@@ -1,0 +1,29 @@
+<link href="https://fonts.googleapis.com/css2?family=Dancing+Script&display=swap" rel="stylesheet">
+<nav class="navbar navbar-light bg-light">
+    <a class="navbar-brand overlay">
+            <h1><a >Fla7etna</a></h1>
+    </a>
+  </nav>
+  <div class="dashpage">
+    <div class="my-nav">
+        <ul>
+            <li (click)="home()"><i class="material-icons">home</i><br>Accueil</li>
+            <li (click)="news()"><i class="material-icons">whatshot</i>Nouveautés</li>
+            <li (click)="article()"><i class="material-icons">pages</i>Articles</li>
+            <li (click)="expert()"><i class="material-icons">person</i> <br>Nos Expert</li>
+            <li (click)="users()"><i class="material-icons">people</i><br>Utilisateurs</li>
+            <li (click)="events()"><i class="material-icons">event</i><br>Evenements</li>
+            <li (click)="product()"><i class="material-icons">store</i><br>Produit</li>
+            <li (click)="quotas()"><i class="material-icons">local_offer</i><br>Quotations</li>
+            <li (click)="commisariat()"><i class="material-icons">store</i><br>Commisariat</li>
+            <br> <br> <br>
+            <li (click)="logout()"><i class="material-icons">input</i> <br>Déconnecter</li>
+            <br> <br> <br>
+        </ul>
+                    
+        
+    </div>
+    <div class="rest-content">
+        <ng-content></ng-content>
+    </div>
+  </div>

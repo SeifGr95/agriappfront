@@ -1,0 +1,45 @@
+<div [ngClass]="show_form?'hide':'show'"  >
+    <div class="filter">
+        <span [ngClass]="{'acti':filter=='all'}" (click)="showList('all')" class="filter-item">tous ( {{all.length}} )</span>
+        <span [ngClass]="{'acti':filter=='animal'}" (click)="showList('animal')" class="filter-item">Animal ( {{animal.length}} ) </span>
+        <span [ngClass]="{'acti':filter=='vegitale'}" (click)="showList('vegitale')" class="filter-item">Vegitale ( {{vegitale.length}} ) </span>
+    </div>
+    <div class="product-list">
+        <div *ngFor="let elem of list" class="prod-item">
+            <div class="cent">
+                <h3>{{ elem.product ? elem.product.title: 'test' }}</h3>
+                <h5>{{elem.prix}} / {{elem.unite}}</h5>
+            </div>
+            
+            <div *ngIf="user && user.type=='admin'" class="action_edit" (click)="showEditForm(elem)" ><i class="material-icons">create</i></div>
+            <div *ngIf="user && user.type=='admin'" class="action_delete" (click)="delete(elem._id)" ><i class="material-icons">delete</i></div>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="user && (user.type=='admin' || user.type=='expert')" [ngClass]="show_form?'show':'hide'" class="prod-form">
+    <h2>Ajouter</h2>
+    <div class="form-group">
+        <label>prix</label>
+        <input class="form-control"  [(ngModel)]="quota.prix">
+    </div>
+    
+    <div class="form-group">
+        <label for="sel1">type</label>
+        <select [(ngModel)]="quota.unite" class="form-control" id="sel1">
+          <option>piece</option>
+          <option>kg</option>
+        </select>
+    </div>
+
+    <div class="form-group" *ngIf="!is_update">
+        <label for="sel1">Produit</label>
+        <select [(ngModel)]="quota.product" class="form-control" id="sel1">
+          <option *ngFor="let prod of products" value="{{prod._id}}">{{ prod.title }}</option>
+        </select>
+    </div>
+    
+    <button class="btn btn-block btn-agri" (click)="addOrUpdate()">{{btn_message}}</button>
+</div>
+<button *ngIf="user && (user.type=='admin' || user.type=='expert')" [ngClass]="show_form?'float-btn-hide':'float-btn'" class="float-btn"><i class="material-icons" style="font-size: 36px;" (click)="showAddForm()">add</i></button>

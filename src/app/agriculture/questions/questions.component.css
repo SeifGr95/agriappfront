@@ -1,0 +1,45 @@
+.question-btn{
+    margin: 15px;
+    padding: 15px;
+    position: relative;
+
+}
+.question-btn button{
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 15px;
+    border-radius: 15px;
+    background-color: #68d23d;
+    color: white;
+}
+
+.img_container{ position: relative;}
+.img_container:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%; /* The padding depends on the width, not on the height, so with a padding-bottom of 100% you will get a square */
+}
+.img_container img {
+    position: absolute; /* Take your picture out of the flow */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; /* Make the picture taking the size of it's parent */
+    width: 100%; /* This if for the object-fit */
+    height: 100%; /* This if for the object-fit */
+    object-fit: cover; /* Equivalent of the background-size: cover; of a background-image */
+    object-position: center;
+  }
+
+  .question-list{
+      display: grid;
+      grid-template-columns: repeat(auto-fill,minmax(250px,1fr));
+      grid-gap: 20px;
+      padding-right: 40px;
+      width: 100%;
+      max-width: 100%;
+  }
+  .question-list-item{
+      border-radius: 10px !important;
+      height: 100%;
+  }

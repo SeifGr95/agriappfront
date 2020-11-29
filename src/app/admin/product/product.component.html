@@ -1,0 +1,36 @@
+<div [ngClass]="show_form?'hide':'show'"  >
+    <div class="filter">
+        <span [ngClass]="{'acti':filter=='all'}" (click)="showList('all')" class="filter-item">tous ( {{all.length}} )</span>
+        <span [ngClass]="{'acti':filter=='animal'}" (click)="showList('animal')" class="filter-item">Animal ( {{animal.length}} ) </span>
+        <span [ngClass]="{'acti':filter=='vegitale'}" (click)="showList('vegitale')" class="filter-item">Vegitale ( {{vegitale.length}} ) </span>
+    </div>
+    <div class="product-list">
+        <div *ngFor="let elem of list" class="prod-item">
+            <img *ngIf="elem.type == 'animal'"  src="../../../assets/img/002-rabbit.png">
+            <img *ngIf="elem.type == 'vegitale'"  src="../../../assets/img/001-carrot.png">
+            <h3>{{elem.title}}</h3>
+            <div *ngIf="user && user.type=='admin'" class="action_edit" (click)="showEditForm(elem)" ><i class="material-icons">create</i></div>
+            <div *ngIf="user && user.type=='admin'" class="action_delete" (click)="delete(elem._id)" ><i class="material-icons">delete</i></div>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="user && (user.type=='admin' || user.type=='expert')" [ngClass]="show_form?'show':'hide'" class="prod-form">
+    <h2>Ajouter</h2>
+    <div class="form-group">
+        <label>Title</label>
+        <input class="form-control"  [(ngModel)]="product.title">
+    </div>
+    
+    <div class="form-group">
+        <label for="sel1">Type</label>
+        <select [(ngModel)]="product.type" class="form-control" id="sel1">
+          <option>vegitale</option>
+          <option>animal</option>
+        </select>
+    </div>
+    
+    <button class="btn btn-block btn-agri" (click)="addOrUpdate()">{{btn_message}}</button>
+</div>
+<button *ngIf="user && (user.type=='admin' || user.type=='expert')" [ngClass]="show_form?'float-btn-hide':'float-btn'" class="float-btn"><i class="material-icons" style="font-size: 36px;" (click)="showAddForm()">add</i></button>

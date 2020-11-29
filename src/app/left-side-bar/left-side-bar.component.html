@@ -1,0 +1,109 @@
+<div class="sidebar sidebar-left">
+    <div class="profile-link">
+        <a href="#" class="media">
+            <div class="w-auto h-100">
+                <figure class="avatar avatar-40"><img src="assets/img/farmer1.png" alt=""> </figure>
+            </div>
+            <div >
+                <h5 class=" mb-0">{{user.name}} {{user.firstname}} <span class="status-online bg-success"></span></h5>
+                <p>{{user.type}}</p>
+            </div>
+        </a>
+    </div>
+
+    <nav class="navbar">
+        <ul class="navbar-nav">
+            <li class="nav-item">
+                <a [routerLink]="['/agri/Acceuil']" class="sidebar-close">
+                    <div class="item-title">
+                        <i class="material-icons">home</i> Accueil
+                    </div>
+                </a>
+            </li>
+
+
+            <li class="nav-item">
+                <a [routerLink]="['/agri/questions']" class="sidebar-close">
+                    <div class="item-title">
+                        <i class="material-icons">comment</i> questions
+                    </div>
+                </a>
+            </li>
+
+
+            <li class="nav-item">
+                <a [routerLink]="['/agri/event']" class="sidebar-close">
+                    <div class="item-title">
+                        <i class="material-icons">eventavailable</i> Events
+                    </div>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a [routerLink]="['/agri/produit']" class="sidebar-close">
+                    <div class="item-title">
+                        <i class="material-icons">store</i> Produits
+                    </div>
+                </a>
+            </li>
+            <li *ngIf="user.type=='expert'" class="nav-item">
+                <a [routerLink]="['/agri/article']" class="sidebar-close">
+                    <div class="item-title">
+                        <i class="material-icons">pages</i> Article
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a [routerLink]="['/agri/quotation']" class="sidebar-close">
+                    <div class="item-title">
+                        <i class="material-icons">local_offer</i> Cotation
+                    </div>
+                </a>
+            </li>
+            <li *ngIf="user.type!='expert'"class="nav-item">
+                <a [routerLink]="['/agri/expert']" class="sidebar-close">
+                    <div class="item-title">
+                        <i class="material-icons">person</i> Expert
+                    </div>
+                </a>
+            </li>
+            <li *ngIf="user.type=='expert'"  class="nav-item">
+                <a [routerLink]="['/agri/rdv']" class="sidebar-close">
+                    <div class="item-title">
+                        <i class="material-icons">date_range</i> Mes Rendez vous
+                    </div>
+                </a>
+            </li>
+            <li class="nav-item">
+                <a [routerLink]="['/agri/commisariat']" class="sidebar-close">
+                    <div class="item-title">
+                        <i class="material-icons">store</i> Commisariat
+                    </div>
+                </a>
+            </li>
+            
+
+            <li class="nav-item">
+                <a [routerLink]="['/agri/profil']" class="sidebar-close">
+                    <div class="item-title">
+                        <i class="material-icons">info</i> À propos
+                    </div>
+                </a>
+            </li>
+
+            <li class="nav-item">
+                <a [routerLink]="['/agri/contact']" class="sidebar-close">
+                    <div class="item-title">
+                        <i class="material-icons">help</i> Contacter nous
+                    </div>
+                </a>
+            </li>
+            
+
+        </ul>
+    </nav>
+
+    <div class="profile-link text-center">
+        <button (click)="logout()" class="btn btn-link text-white btn-block">Déconnecter</button>
+    </div>
+</div>

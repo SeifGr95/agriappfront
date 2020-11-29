@@ -1,0 +1,30 @@
+<div class="search">
+    <input placeholder="rechercher..." type="text" [(ngModel)]="search_txt" (ngModelChange)="search()" />
+    <button><i class="material-icons">search</i></button>
+</div>
+<div class="expert-list">
+    <div *ngFor="let element of list" class="list-item">
+
+        <div class="details_container">
+            <h3>Agriculteur :  {{element.client.firstname}} {{element.client.name}} </h3>
+            <h5>Télphone : {{element.lieu_rdv}}</h5>
+            <h5>Date de RDV demandée  : {{element.date_rdv}}</h5>
+            <h5>Informations complémentaires/commentaires : </h5    > <p> {{element.sujet_rdv}}</p>
+
+        </div>
+        <div>
+            <div class="status " *ngIf = "element.Etat == 1"  >
+                
+                <span class="accepte">Accepté</span>
+            </div>
+            <div class="status" *ngIf = "element.Etat == 2" >
+                <span class="refuse">Refusé</span>
+                
+            </div>
+            <br> <br>
+            <button *ngIf = "!element.Etat || element.Etat == 0" type="button" class="btn btn-success" data-dismiss="modal" (click)="updateEtat(1,element)">Accepter</button>
+            <br> <br>
+            <button  *ngIf = "!element.Etat || element.Etat == 0" type="button" class="btn btn-danger" data-dismiss="modal" (click)="updateEtat(2, element)">Refuser </button>
+        </div>
+    </div>
+</div>

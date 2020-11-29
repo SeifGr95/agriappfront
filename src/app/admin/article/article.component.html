@@ -1,0 +1,33 @@
+
+<div [ngClass]="show_form?'hide':'show'" class="news-list">
+    <div *ngFor="let element of article_list" class="list-item">
+        <div class="details_container">
+            <h3>{{element.title}}</h3>
+            <p>{{element.description}}</p>
+        </div>
+        <div *ngIf="user && user.type=='admin'" class="action_edit" (click)="showEditForm(element)"><i class="material-icons">create</i></div>
+        <div *ngIf="user && user.type=='admin'" class="action_delete" (click)="delete(element._id)"><i class="material-icons">delete</i></div>
+    </div>
+</div>
+
+<div *ngIf="user && (user.type=='admin' || user.type=='expert')" [ngClass]="show_form?'show':'hide'" class="news-form">
+    <div class="form-group">
+        <label>Title</label>
+        <input class="form-control"  [(ngModel)]="article.title">
+    </div>
+    
+    
+    <div class="form-group">
+        <label> Description</label>
+        <textarea class="form-control" [(ngModel)]="article.description"></textarea>
+    </div>
+    <div class="form-group">
+        <label> Contenu</label>
+        <textarea rows="5" class="form-control" [(ngModel)]="article.contenu"></textarea>
+    </div> 
+    
+    
+    <button class="btn btn-block btn-agri" (click)="addOrUpdate()">{{btn_message}}</button>
+</div>
+
+<button *ngIf="user && (user.type=='admin' || user.type=='expert')" [ngClass]="show_form?'float-btn-hide':'float-btn'" class="float-btn"><i class="material-icons" style="font-size: 36px;" (click)="showAddForm()">add</i></button>

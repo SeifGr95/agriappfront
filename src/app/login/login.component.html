@@ -3,27 +3,29 @@
     <!-- page main start -->
     <div class="page">
         <div class="page-content h-100">
-            <div class="background theme-header"><img src="assets/img/city2.jpg" alt=""></div>
+            <div class="background theme-header"><img src="assets/img/backg.jpg"  alt=""></div>
             <div class="row mx-0 h-100 justify-content-center">
                 <div class="col-10 col-md-6 col-lg-4 my-3 mx-auto text-center align-self-center">
-                    <img src="assets/img/logo-w.png" alt="" class="login-logo">
-                    <h1 class="login-title"><small>Welcome to,</small><br>Overux</h1>
+                    <img src="assets/img/logoF.png" alt="" class="login-logo">
                     <br>
-                    <h5 class="text-white mb-4">Sing in</h5>
+                    <!--<h1 class="login-title"><small>Welcome to,</small><br>Fla7etna</h1>
+                    <br> -->
+                    
+                    <h5 class="text-white mb-4">S'authentifier</h5>
                     <div class="login-input-content ">
                         <div class="form-group">
                             <input type="text" class="form-control rounded text-center" [(ngModel)]="user.email" placeholder="email">
                         </div>
                         <div class="form-group">
-                            <input type="password" class="form-control rounded text-center" [(ngModel)]="user.password" placeholder="Password">
+                            <input type="password" class="form-control rounded text-center" [(ngModel)]="user.password" placeholder="mot de passe">
                         </div>
-                        <button (click)="testauth()" class="btn btn-block btn-success rounded border-0 z-3" [disabled]="!user.email || !user.password ">Sign in</button>
+                        <button (click)="testauth()" class="btn btn-block btn-success rounded border-0 z-3" [disabled]="!user.email || !user.password ">Connecter</button>
                     </div>
                     <br>
                     <br>
                     <div class="row no-gutters">
-                        <div class="col-6 text-left"><a href="forgot-password.html" class="text-white mt-3">Forget Password?</a></div>
-                        <div class="col-6 text-right"><a  [routerLink]="['/register']" class="text-white text-center mt-3">Sign up</a></div>
+                        <div class="col-6 text-left"><a [routerLink]="['/forgot-password']" class="text-white mt-3">Mot de passe oubilé ? </a></div>
+                        <div class="col-6 text-right"><a  [routerLink]="['/register']" class="text-white text-center mt-3">S'enregistrer</a></div>
                     </div>                        
                 </div>
             </div>

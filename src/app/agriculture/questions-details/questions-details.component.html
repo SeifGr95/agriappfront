@@ -1,1 +1,42 @@
-<p>questions-details works!</p>
+<div class="question">
+    <div class="row">
+        <div class="col-md-3">
+            <img src="{{question?.image}}"  width="100%" height="100%">
+        </div>
+        <div class="col-md-9">
+            <h4>{{question?.title}}</h4>
+            <h6>{{question?.description}}</h6>
+        </div>
+    </div>
+    <hr>
+    <h4 *ngIf="answers.length>0">Reponse :</h4>
+    <ul class="list-group mb-4 media-list">
+        <li class="list-group-item" *ngFor="let item of answers">
+            <a [routerLink]="['/agri/question-details' , item._id]" class="media shadow-15">
+                <div class="media-body">
+                    <h5>{{item.user?.firstname}} {{item.user?.name}}  </h5>
+                    <p class="mb-0">{{item.answer}}</p>
+                    <small> {{item.date_ago}}</small>
+                </div>
+    
+            </a>
+        </li>
+    </ul>
+    <button class="btn btn-outline-danger" *ngIf="question && question.id_user == user_id" (click)="delete()"> supprimer </button>
+    
+    <div class="row" *ngIf="user && user.type == 'expert'">
+        <div class="col-md-10">
+            <input  [(ngModel)]="new_answer" class="form-control" (keyup.enter)="add_answer()">
+        </div>
+        <div class="col-md-2">
+            <button class="answer-btn"><i class="material-icons">send</i></button>
+        </div>
+        
+    </div>
+    
+</div>
+
+
+
+
+

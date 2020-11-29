@@ -1,0 +1,18 @@
+<div class="container">
+   
+  
+      <label for="fname">Email</label>
+      <input type="text" id="fname" [(ngModel)]="email" placeholder="Email">
+  
+      <label for="lname">Sujet</label>
+      <input type="text" id="lname" [(ngModel)]="subject" placeholder="Sujet">
+  
+      
+
+  
+      <label for="subject">Message</label>
+      <textarea id="subject" [(ngModel)]="text" placeholder="Ecrivez votre message..." style="height:200px"></textarea>
+  
+      <input type="submit" class="btn btn-success" value="Envoyer" (click)="send()">
+  
+     </div>

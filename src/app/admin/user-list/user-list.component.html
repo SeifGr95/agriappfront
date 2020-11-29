@@ -1,0 +1,24 @@
+
+<div class="search">
+    <input placeholder="rechercher..." type="text" [(ngModel)]="search_txt" (ngModelChange)="search()" />
+    
+                        
+    <button><i class="material-icons">search</i></button>
+</div>
+
+
+<div class="user-list" >
+
+    
+    <div class="user-item" *ngFor="let elem of list_user">
+        <div class="letter-container"><span>{{ elem.name[0].toUpperCase()}}</span></div>
+        <div class="detail-container">
+            
+            <h4>{{elem.firstname}} {{elem.name}} </h4>
+            <p>{{elem.email}}</p>
+            <p>{{elem.type}}</p>
+        </div>
+        <div class="action-delete" (click)="delete(elem._id)"><i class="material-icons">delete</i></div>
+        <div class="action-block"><i class="material-icons">block</i></div>
+    </div>
+</div>

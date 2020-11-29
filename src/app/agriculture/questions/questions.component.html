@@ -1,1 +1,23 @@
-<p>questions works!</p>
+<h2 *ngIf="!mode" class="block-title">Questions</h2>
+<ul class=" list-group mb-4 media-list" [ngClass]="{'question-list': !mode }">
+    <li class="list-group-item" *ngFor="let item of items" >
+        <a [routerLink]="['/agri/question-details' , item._id]" class="media shadow-15" [ngClass]="{'question-list-item': !mode }">
+            <div class="media-body row">
+                <div class="col-lg-12 img_container">
+                    <img src="{{item.image}}" width="100%" height="auto">
+                </div>
+                <div class="col-lg-12">
+                    <h5>{{item.title}} </h5>
+                    <p class="mb-0">{{item.type}}</p>
+                    <h2 class="title-number-carousel color-primary"><small>{{item.date_ago}}</small></h2>
+                </div>
+                
+            </div>
+        </a>
+    </li>
+</ul>
+<div class="question-btn">
+    <button *ngIf="user && user.type == 'agriculteur'" [routerLink]="['/agri/question-add']" class="btn btn-block">
+        Poser une
+        Question</button>
+</div>

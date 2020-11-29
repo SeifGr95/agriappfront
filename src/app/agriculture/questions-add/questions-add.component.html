@@ -1,1 +1,31 @@
-<p>questions-add works!</p>
+<div class="add-question">
+    <div class="form-group">
+        <label>Title</label>
+        <input class="form-control"  [(ngModel)]="question.title">
+    </div>
+    
+    <div class="form-group">
+        <label>Type</label>
+        <select class="form-control" [(ngModel)]="question.type">
+            <option>animal</option>
+            <option> vegitale</option>
+        </select>
+    </div>
+    
+    <div class="form-group">
+        <label> Description</label>
+        <textarea class="form-control" [(ngModel)]="question.description"></textarea>
+    </div>
+    <div class="input-group">
+        <div class="input-group-prepend">
+          <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+        </div>
+        <div class="custom-file">
+          <input type="file" class="custom-file-input" id="inputGroupFile01"
+            aria-describedby="inputGroupFileAddon01" (change)="upload($event)">
+          <label class="custom-file-label" for="inputGroupFile01">Choose file</label>
+        </div>
+      </div>
+    <img style="margin: 20px 0;" [src]="question.image" width="100%">
+    <button class="btn btn-block btn-agri" (click)="createQuestion()">Ajouter</button>
+</div>

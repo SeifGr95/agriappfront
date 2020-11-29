@@ -1,0 +1,50 @@
+<div [ngClass]="show_form?'hide':'show'">
+    <div class="search">
+        <input placeholder="rechercher..." type="text" [(ngModel)]="search_txt" (ngModelChange)="search()"/>
+        <button><i class="material-icons">search</i></button>
+    </div>
+    <div class="list-com"  >
+        <div class="comm" *ngFor="let elem of list" >
+            <h2>{{elem.name_com}}</h2>
+            <p>{{elem.adresse_com}}</p>
+            <span> {{elem.email_com}} -- {{elem.tel_com}}</span>
+            <div *ngIf="user && user.type=='admin'" class="action_edit" (click)="showEditForm(elem)" ><i class="material-icons">create</i></div>
+            <div *ngIf="user && user.type=='admin'" class="action_delete" (click)="delete(elem._id)" ><i class="material-icons">delete</i></div>
+        </div>
+    </div>
+</div>
+
+
+<div *ngIf="user && (user.type=='admin')" [ngClass]="show_form?'show':'hide'" class="prod-form">
+    <h2>Ajouter</h2>
+    <div class="form-group">
+        <label>Titre</label>
+        <input class="form-control"  [(ngModel)]="com.name_com">
+    </div>
+
+    <div class="form-group">
+        <label>Ville</label>
+        <input class="form-control"  [(ngModel)]="com.ville_com">
+    </div>
+    <div class="form-group">
+        <label>Addresse</label>
+        <input class="form-control"  [(ngModel)]="com.adresse_com">
+    </div>
+
+    <div class="form-group">
+        <label>Téléphone</label>
+        <input class="form-control"  [(ngModel)]="com.tel_com">
+    </div>
+    <div class="form-group">
+        <label>Email</label>
+        <input class="form-control"  [(ngModel)]="com.email_com">
+    </div>
+
+    <div class="form-group" *ngIf="!is_update">
+        <label for="sel1">Fax</label>
+        <input class="form-control"  [(ngModel)]="com.verification">
+    </div>
+    
+    <button class="btn btn-block btn-agri" (click)="addOrUpdate()">{{btn_message}}</button>
+</div>
+<button *ngIf="user && (user.type=='admin')" [ngClass]="show_form?'float-btn-hide':'float-btn'" class="float-btn"><i class="material-icons" style="font-size: 36px;" (click)="showAddForm()">add</i></button>

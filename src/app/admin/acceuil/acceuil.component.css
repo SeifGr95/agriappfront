@@ -1,0 +1,21 @@
+.question-stats{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-gap: 15px;
+    margin: 25px;
+}
+.solved-questions,.new-expert,.platform-users{
+    background: white;
+    border-radius: 8px;
+    box-shadow:  0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    padding: 25px;
+    text-align: center;
+    width: 100%;
+}
+.solved-questions h2,.new-expert h2,.platform-users h2{
+    font-size: 55px;
+    font-weight: bold;
+}
+.solved-questions h2{ color:indigo}
+.new-expert h2{ color:deeppink}
+.platform-users h2{ color:cyan}

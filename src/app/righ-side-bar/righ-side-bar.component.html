@@ -1,0 +1,46 @@
+<div class="sidebar sidebar-right">
+    <header class="row m-0 fixed-header">
+        <div class="left">
+            <a href="javascript:void(0)" class="menu-left-close"><i
+                    class="material-icons">keyboard_backspace</i></a>
+        </div>
+        <div class="col center">
+            <a href="#" class="logo">Paramètres</a>
+        </div>
+    </header>
+    <div class="page-content text-white">
+        <div class="row mx-0 mt-3">
+            <div class="col">
+                <div class="card bg-none border-0 shadow-none">
+                    <div class="card-body userlist_large">
+                        <div class="media">
+                            <figure class="avatar avatar-120 rounded-circle my-2">
+                                <img src="assets/img/farmer1.png" alt="user image">
+                            </figure>
+                           
+                               
+                            <div class="media-body">
+
+                                <h4 class="mt-0 text-white">{{user.name}} {{user.firstname}}</h4>
+
+                                <p class="text-white">{{user.type}}</p>
+                               <input class="form-control" type="text"  [(ngModel)] = "email"  required minlength="4"> <br>
+                                <button class="btn btn-light" (click)= "updateemail()" >Enregistrer</button> 
+                                <br>
+                                <br>
+                                <input class="form-control" type="password"  [(ngModel)] = "oldpwd" placeholder="Mot de passe actuelle" required minlength="4">
+                                <br> <h6 *ngIf = " confnewpwd && newpwd && newpwd != confnewpwd" style="color: red;">Mot de passe non identique</h6> 
+                                <br>
+                                <input class="form-control" type="password" [(ngModel)] = "newpwd" placeholder="Nouveau mot de passe" required minlength="4">
+                                <br>
+                                <input class="form-control" type="password"  [(ngModel)] = "confnewpwd" placeholder="Confirmer le nouveau mot de passe"  required minlength="4">
+                                <br>
+                                <button class="btn btn-warning" (click)= "updatepwd()" [disabled]= "!oldpwd || !newpwd || newpwd != confnewpwd "> Confirmer</button> 
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

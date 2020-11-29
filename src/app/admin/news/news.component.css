@@ -1,0 +1,117 @@
+.btn-agri{
+    font-size: 14px;
+    font-weight: 700;
+    padding: 10px 15px;
+    border-radius: 15px;
+    background-color: #68d23d;
+    color: white;
+}
+
+.news-form{
+    margin: 0 10px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+}
+.hide {
+    display: none;
+    opacity: 0;
+    transition: opacity 0.26s ease;   
+}
+
+.show{
+    display: block;
+   opacity: 1;
+   transition: opacity 0.26s ease;
+}
+
+.float-btn{
+    position: fixed;
+    bottom: 50px;
+    right: 50px;
+    border: none;
+    outline: none;
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    background: #68d23d;
+    color: white;
+    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+    transition: transform .3s ease-in-out;
+}
+.float-btn-hide{
+    transform: rotate(135deg);
+}
+
+.list-item{
+   height: 250px;
+   background: white;
+   padding: 15px;
+   border-radius: 8px;
+   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+   display: flex;
+   margin-bottom: 15px;
+   position: relative;
+}
+
+.list-item .details_container{
+    flex: 70%;
+    margin: 25px;
+}
+.list-item .action_edit{
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    border-top-right-radius: 8px;
+    border-bottom-left-radius: 50%;
+    border: none;
+    background-color: aqua;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.list-item .action_delete{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 40px;
+    height: 40px;
+    border-bottom-right-radius: 8px;
+    border-top-left-radius: 50%;
+    border: none;
+    background-color: crimson;
+    text-align: center;
+    vertical-align: middle;
+    color: white;
+    font-size: 22px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.list-item .img_container{    flex:30%; position: relative;}
+.list-item .img_container:after {
+    content: "";
+    display: block;
+    padding-bottom: 100%; /* The padding depends on the width, not on the height, so with a padding-bottom of 100% you will get a square */
+}
+.list-item .img_container img {
+    position: absolute; /* Take your picture out of the flow */
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0; /* Make the picture taking the size of it's parent */
+    width: 100%; /* This if for the object-fit */
+    height: 100%; /* This if for the object-fit */
+    object-fit: cover; /* Equivalent of the background-size: cover; of a background-image */
+    object-position: center;
+  }

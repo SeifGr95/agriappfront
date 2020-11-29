@@ -1,0 +1,46 @@
+<div [ngClass]="show_form?'hide':'show'" class="news-list">
+    <div *ngFor="let element of news_list" class="list-item">
+        <div class="img_container">
+            <img src="{{element.image}}" >
+        </div>
+        <div class="details_container">
+            <h3>{{element.title}}</h3>
+            <p>{{element.description}}</p>
+        </div>
+        <div *ngIf="user && user.type=='admin'" class="action_edit" (click)="showEditForm(element)"><i class="material-icons">create</i></div>
+        <div *ngIf="user && user.type=='admin'" class="action_delete" (click)="delete(element._id)"><i class="material-icons">delete</i></div>
+    </div>
+</div>
+
+<div *ngIf="user && user.type=='admin'" [ngClass]="show_form?'show':'hide'" class="news-form">
+    <div class="form-group">
+        <label>Title</label>
+        <input class="form-control"  [(ngModel)]="news.title">
+    </div>
+    
+    
+    <div class="form-group">
+        <label> Description</label>
+        <textarea class="form-control" [(ngModel)]="news.description"></textarea>
+    </div>
+    <div class="form-group">
+        <label> Contenu</label>
+        <textarea rows="5" class="form-control" [(ngModel)]="news.contenu"></textarea>
+    </div> 
+    <div [ngClass]="is_update?'hide':'show'" class="form-group">
+        <div class="input-group">
+            <div class="input-group-prepend">
+              <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
+            </div>
+            <div class="custom-file">
+              <input type="file" class="custom-file-input" id="inputGroupFile01"
+                aria-describedby="inputGroupFileAddon01" (change)="upload($event)">
+              <label class="custom-file-label" for="inputGroupFile01">{{file_name}}</label>
+            </div>
+          </div>
+    </div>
+    
+    <button class="btn btn-block btn-agri" (click)="addOrUpdateNews()">{{btn_message}}</button>
+</div>
+
+<button *ngIf="user && user.type=='admin'" [ngClass]="show_form?'float-btn-hide':'float-btn'" class="float-btn"><i class="material-icons" style="font-size: 36px;" (click)="showAddForm()">add</i></button>

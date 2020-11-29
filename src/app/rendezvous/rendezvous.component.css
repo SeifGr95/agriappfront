@@ -1,0 +1,66 @@
+.expert-list{
+    padding: 15px;
+}
+
+.list-item{
+   background: white;
+   padding: 15px;
+   border-radius: 8px;
+   box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+   display: flex;
+   margin-bottom: 15px;
+   position: relative;
+}
+
+.list-item .details_container{
+    flex: 1;
+    margin: 25px;
+}
+
+.status{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+.status .refuse{
+ padding: 3px 10px;
+ background: red;
+ color: white;
+ border-radius: 25px;
+}
+
+.status .accepte{
+    padding: 3px 10px;
+    background: green;
+    color: white;
+    border-radius: 25px;
+   }
+
+
+.search{
+    padding: 15px;
+    width: 60%;
+    position: relative;
+}
+.search input{
+    height: 50px;
+    border-radius: 8px;
+    padding: 5px 15px;
+    width: 100%;
+    border-color: #68d23d;
+    outline-color: #53c028;
+    color: #333333;
+}
+.search button{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: #68d23d;
+    color: white;
+    border: none;
+    outline: none;
+}

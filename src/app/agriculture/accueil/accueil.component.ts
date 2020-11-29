@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import {ArticleService} from 'src/app/apis/article.service'
-declare var $ : any;
+import { NewsService } from 'src/app/apis/news.service'
+declare var $: any;
 @Component({
   selector: 'app-accueil',
   templateUrl: './accueil.component.html',
@@ -8,20 +8,13 @@ declare var $ : any;
 })
 export class AccueilComponent implements OnInit {
 
-  constructor(private articlesrv : ArticleService ) { } //
-articles;
-selectedArticle
+  constructor() { }
+  
   ngOnInit(): void {
-    this.articlesrv.getarticle()
-    .subscribe((data)=>{
-      this.articles=data;
-      console.log(this.articles)
-    })
-
-  }
-  showarticle(element){
-    $(".modal-backdrop").css('display' , 'none')
-    this.selectedArticle=element
+    
+    
+    
+    
   }
 
 }

@@ -1,50 +1,121 @@
-<h2 class="block-title">News</h2>
-                    <ul class="list-group mb-4 media-list ">
-                        <li class="list-group-item" *ngFor="let element of items">
-                            <a (click)="showItem(element)" class="sidebar-close dropdown-item popup-open media shadow-15" data-toggle="modal" data-target="#fullscreenmenu" >
-                                <div class="w-auto h-100">
-                                    <figure class="avatar avatar-80"><img src="assets/img/user1.png" alt=""> </figure>
-                                </div>
-                                <div class="media-body">
-                                    <h5>{{element.title}} </h5>
-                                    <p class="small mb-2 text-secondary">Type: {{element.type}}</p>
-                                    <p>{{element.description}} </p>
-                                </div>
-                            </a>
-                        </li>
-                       
-                    </ul>
 
-                    <div *ngIf="selectedItem" class="modal fade popup-fullmenu" id="fullscreenmenu" tabindex="-1" role="dialog" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content ">
-                                <div class="modal-header">
-                                    <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                <div class="modal-body" >
-                                    <ul class="list-group mb-4 media-list ">
-                                        <li class="list-group-item">
-                                            
-                                                <div class="w-auto h-100">
-                                                    <figure class="avatar avatar-80"><img src="assets/img/user1.png" alt=""> </figure>
-                                                </div>
-                                                <div class="media-body">
-                                                    <h5>{{selectedItem.title}} </h5>
-                                                    <p class="small mb-2 text-secondary">Type: {{selectedItem.type}}</p>
-                                                    <p class="small mb-2 text-secondary"> <i class="fa fa-calendar"></i>Date: {{selectedItem.date}}</p>
-                                                    <p>{{selectedItem.description}} </p>
-                                                    <p>{{selectedItem.contenu}}</p>
-                                                </div>
-                                                <div class="media-footer">
-                                                    <i class="material-icons" (click)="setfavoris(selectedItem._id)"> {{isfavoris(selectedItem._id) ? 'star' : 'star_border'}} </i>
-                                                </div>
-                                            
-                                        </li>
-                                       
-                                    </ul>
-                                </div>
-                            </div>
+<div *ngIf="selectedItem" class="modal fade popup-fullmenu" id="fullscreenmenu" tabindex="-1" role="dialog"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content " id="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">{{selectedItem.title}}</h5>
+                <button type="button" class="close text-black" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <ul class="list-group mb-4 media-list ">
+                    <li class="list-group-item">
+                        <div class="media-body">
+                            <p class="small mb-2 text-secondary"> <i class="material-icons"> event </i><strong>Date : </strong>
+                                {{selectedItem.date}}</p>
+                                <p> <strong>Lieu : </strong>{{selectedItem.lieu}} </p>
+                            <p> <strong>Description : </strong>{{selectedItem.description}} </p>
+                            <p><strong>Contenu : </strong> {{selectedItem.contenu}}</p>
                         </div>
+                        <!-- <div class="media-footer">
+                            <i class="material-icons" (click)="setfavoris(selectedItem._id)">
+                                {{isfavoris(selectedItem._id) ? 'star' : 'star_border'}} </i>
+                        </div> -->
+
+                    </li>
+
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+    
+<div  class="modal fade popup-fullmenu" id="ggg" tabindex="-1" role="dialog"
+    aria-hidden="true">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content " id="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title">Evenement</h5>
+                <button type="button" class="close text-black" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+
+                <div class="form-group">
+                    <label for="exampleFormControlInput1">Title</label>
+                    <input type="text" class="form-control" [(ngModel)]="title" >
+                  </div>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <input class="form-control" placeholder="yyyy-mm-dd"
+                             name="dp" [(ngModel)]="dateModel" ngbDatepicker #d="ngbDatepicker" [minDate]="today">
+                      <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" (click)="d.toggle()" type="button"> <i class="material-icons"> event </i></button>
+                      </div>
                     </div>
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleFormControlSelect1">Type</label>
+                    <select class="form-control" [(ngModel)]="type" >
+                      <option value="foir">Foir</option>
+                      <option value="formation">Formation </option>
+                    </select>
+                    
+                    
+                  </div>
+
+                  <div class="form-group">
+                    <label for="exampleFormControlInput1">Lieu</label>
+                    <input type="text" class="form-control" [(ngModel)]="lieu">
+                  </div>
+
+                  <div class="form-group">
+                    <label >Description</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1"  [(ngModel)]="description" rows="3"></textarea>
+                  </div>
+                  <div class="form-group">
+                    <label >Contenu</label>
+                    <textarea class="form-control" id="exampleFormControlTextarea1"  [(ngModel)]="contenu" rows="3"></textarea>
+                  </div>
+                  
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-dismiss="modal">Abondonner</button>
+                <button *ngIf="!is_update" type="button" class="btn btn-primary" data-dismiss="modal" (click)="add()">Ajouter</button>
+                <button *ngIf="is_update" type="button" class="btn btn-primary" data-dismiss="modal" (click)="update()">Modifier</button>
+              </div>
+        </div>
+    </div>
+</div>
+
+<div class="filter">
+    <span [ngClass]="{'acti':all_active}" (click)="showAllList()"> tous ( {{all.length}} )</span>
+    <span *ngIf="favoris.length>0" [ngClass]="{'acti':!all_active}" (click)="showFavList()"> favoris ( {{favoris.length}} )</span>
+</div>
+
+
+<div class="list-events">
+    <div class="event-item" *ngFor="let element of items">
+        <div class="event-date">{{element.date}}</div>
+        <div (click)="showItem(element)" data-toggle="modal" data-target="#fullscreenmenu" class="event-detail">
+            <h3>{{element.title}}</h3>
+            <p>{{element.lieu}}</p>
+        </div>
+        <div class="bla">
+            <div class="event-actions">
+                <div *ngIf="user && user.type == 'admin'" data-toggle="modal" data-target="#ggg" (click)="showEdit(element)" class="ev-action"><i class="material-icons">create</i></div>
+                <div *ngIf="isFavoris(element._id)==true" class="ev-action"><i class="material-icons">star</i></div>
+                <div *ngIf="isFavoris(element._id)==false" (click)="setfavoris(element._id)" class="ev-action"><i class="material-icons">star_border</i></div>
+                <div *ngIf="user && user.type == 'admin'" (click)="delete(element._id)" class="ev-action"><i class="material-icons">delete</i></div>
+            </div>
+        </div>
+        
+    </div>
+</div>
+<button class="float-btn" *ngIf="user && user.type == 'admin'" data-toggle="modal" data-target="#ggg"><i class="material-icons" style="font-size: 36px;" >add</i></button>
