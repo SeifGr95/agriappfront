@@ -7,7 +7,7 @@ import { EventModel } from '../agriculture/events/event.model';
 })
 export class EventService {
   constructor(private http: HttpClient) {}
-  url = 'http://localhost:3000';
+  url = "https://flahetna.herokuapp.com"
   token = localStorage.getItem('token');
   id = localStorage.getItem('id');
   getevent() {

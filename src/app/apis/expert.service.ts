@@ -7,7 +7,7 @@ import { Injectable } from '@angular/core';
 export class ExpertService {
 
   constructor(private http: HttpClient) { }
-  url = 'http://localhost:3000';
+  url = "https://flahetna.herokuapp.com"
   token = localStorage.getItem('token');
   options = {
     headers: new HttpHeaders({

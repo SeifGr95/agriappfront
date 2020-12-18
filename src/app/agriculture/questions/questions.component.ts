@@ -9,6 +9,7 @@ import { QAService } from 'src/app/apis/qa.service'
 
 export class QuestionsComponent implements OnInit {
 
+   
   @Input() mode: string;
 
   constructor(private service: QAService) { }
@@ -29,6 +30,9 @@ export class QuestionsComponent implements OnInit {
           this.formatDate()
         })
 
+
+
+
   }
   formatDate() {
     this.items.forEach(item => {
@@ -36,4 +40,8 @@ export class QuestionsComponent implements OnInit {
         item.date_ago = moment(item.posted_date).fromNow();
     });
   }
+
+
+  
+
 }

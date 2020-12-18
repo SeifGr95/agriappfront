@@ -6,7 +6,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 })
 export class QAService {
   constructor(private http: HttpClient) {}
-  url = 'http://localhost:3000';
+  url = "https://flahetna.herokuapp.com"
   token = localStorage.getItem('token');
   options = {
     headers: new HttpHeaders({

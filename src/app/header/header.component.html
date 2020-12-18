@@ -3,14 +3,16 @@
    
     <div class="righ-sid-menu">
         <div class="dr dropdown">
-            <a href="javascript:void(0)" class=" " (click) = "dropdown()" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons">notifications</i></a>
+            <a href="javascript:void(0)" class=" " (click) = "dropdown()" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><i class="material-icons">notifications</i>
+            <span class="badge badge-pill badge-danger" style="padding:5px" >{{notifs.length}}</span></a>
 
          
             <div *ngIf= "show" class="dropdown-menu show" style="left:-120px" aria-labelledby="dropdownMenuButton">
               <a *ngFor = "let notif of notifs "class="dropdown-item" [routerLink]="[user.type=='expert'?'/agri/rdv' : '/agri/expert']" >
                   
+                
                 {{notif.contenu}} <br>
-                {{notif.fromuserid.firstname}}{{notif.fromuserid.name}} <br>
+                {{notif.fromuserid.firstname}} {{notif.fromuserid.name}} <br>
                 {{notif.created_at | date}}
 
            </a>

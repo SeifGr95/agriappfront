@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnChanges, OnInit } from '@angular/core';
 import { UserService } from '../apis/user.service';
 
 @Component({
@@ -6,9 +6,9 @@ import { UserService } from '../apis/user.service';
   templateUrl: './header.component.html',
   styleUrls: ['./header.component.css']
 })
-export class HeaderComponent implements OnInit {
+export class HeaderComponent implements OnInit  {
 
-  notifs 
+  notifs = []
   show = false 
   constructor(private srv : UserService ) { }
 
@@ -17,14 +17,14 @@ export class HeaderComponent implements OnInit {
     console.log("test" , this.user.email)
     if
     ( this.user.type == "expert") {
-      this.srv.getusernotification(this.user.email).subscribe(data=>{
+      this.srv.getusernotification(this.user.email).subscribe((data:any[])=>{
         this.notifs = data 
         console.log(this.notifs);
         
       })
       
     } else {
-      this.srv.getagriNotification(this.user._id).subscribe(data=>{
+      this.srv.getagriNotification(this.user._id).subscribe((data:any[])=>{
         this.notifs = data 
         console.log(this.notifs);
         
@@ -32,6 +32,8 @@ export class HeaderComponent implements OnInit {
     }
    
   }
+
+  
 
   dropdown () {
     this.show = !this.show

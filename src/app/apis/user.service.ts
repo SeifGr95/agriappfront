@@ -7,7 +7,7 @@ import { HttpClient} from '@angular/common/http'
 export class UserService {
 
   constructor(private http : HttpClient) { }
-  url="http://localhost:3000"
+  url = "https://flahetna.herokuapp.com"
   token = localStorage.getItem('token');
 
   createUser(body){

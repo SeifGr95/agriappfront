@@ -43,3 +43,30 @@
       border-radius: 10px !important;
       height: 100%;
   }
+
+  .search{
+    padding: 15px;
+    width: 60%;
+    position: relative;
+}
+.search input{
+    height: 50px;
+    border-radius: 8px;
+    padding: 5px 15px;
+    width: 100%;
+    border-color: #68d23d;
+    outline-color: #53c028;
+    color: #333333;
+}
+.search button{
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 40px;
+    height: 40px;
+    border-radius: 8px;
+    background-color: #68d23d;
+    color: white;
+    border: none;
+    outline: none;
+}
