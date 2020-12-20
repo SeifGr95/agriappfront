@@ -8,7 +8,23 @@ export class UserService {
 
   constructor(private http : HttpClient) { }
   url = "https://flahetna.herokuapp.com"
+ //url='http://Localhost:3000'
   token = localStorage.getItem('token');
+
+  forgotPassword(email){
+    
+    return this.http.get(this.url+'/users/forgotpwd/'+email);
+  }
+ 
+  resetPassword(body){
+    return this.http.post(this.url+'/users/resetpwd', body);
+
+  }
+  getUserByToken(body){
+    return this.http.post(this.url+'/users/usertoken', body);
+
+  }
+
 
   createUser(body){
     return this.http.post(this.url+'/users' , body)

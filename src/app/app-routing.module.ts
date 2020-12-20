@@ -20,8 +20,14 @@ import { CommisariatComponent } from './commisariat/commisariat.component';
 import { ProductComponent } from './admin/product/product.component';
 import { ExpertComponent } from './admin/expert/expert.component';
 import { RendezvousComponent } from './rendezvous/rendezvous.component';
+import { ForgotPassNewpassComponent } from './forgot-pass-newpass/forgot-pass-newpass.component';
 
 const routes: Routes = [
+  
+  {
+    path:'forgot-password/:token',
+    component : ForgotPassNewpassComponent
+  },
   {
     path:'',
     redirectTo:'login',
@@ -31,6 +37,7 @@ const routes: Routes = [
     path:'login',
     component : LoginComponent
   },
+  
   {
     path:'register',
     component : RegisterComponent
@@ -38,7 +45,6 @@ const routes: Routes = [
     path:'forgot-password',
     component : ForgotPassEmailComponent
   },
-  
   {
     path:'agri',
     component : AgricultureComponent,

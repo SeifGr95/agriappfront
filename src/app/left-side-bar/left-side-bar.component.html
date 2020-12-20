@@ -46,13 +46,14 @@
                     </div>
                 </a>
             </li>
-            <li *ngIf="user.type=='expert'" class="nav-item">
+            <li  class="nav-item">
                 <a [routerLink]="['/agri/article']" class="sidebar-close">
                     <div class="item-title">
                         <i class="material-icons">pages</i> Article
                     </div>
                 </a>
             </li>
+           
             <li class="nav-item">
                 <a [routerLink]="['/agri/quotation']" class="sidebar-close">
                     <div class="item-title">
@@ -67,6 +68,8 @@
                     </div>
                 </a>
             </li>
+
+                
             <li *ngIf="user.type=='expert'"  class="nav-item">
                 <a [routerLink]="['/agri/rdv']" class="sidebar-close">
                     <div class="item-title">

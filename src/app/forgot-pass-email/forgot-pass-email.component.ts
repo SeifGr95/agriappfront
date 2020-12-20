@@ -22,15 +22,13 @@ export class ForgotPassEmailComponent implements OnInit {
 
 
   testauth() {
-this.service.login(this.user)
+this.service.forgotPassword(this.user.email)
 .subscribe((data : any)=>{
   console.log(data);
-  localStorage.setItem('token' , data.token)
-  localStorage.setItem('id' , data.id); 
   
-this.router.navigate(['/agri'])
-},(err)=>{
 
+},(err)=>{
+console.log(err)
 })
 
   } 

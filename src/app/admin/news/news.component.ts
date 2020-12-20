@@ -27,7 +27,7 @@ export class NewsComponent implements OnInit {
     this.news = new NewsModel();
     this.show_form = false;
     if (this.mode && this.mode == "recent") {
-      this.NewsService.getRecentNews(2).subscribe(res => {
+      this.NewsService.getRecentNews(3).subscribe(res => {
         this.news_list = res
       })
     } else

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { User } from '../viewModels/user';
 import { UserService } from '../apis/user.service';
 
@@ -10,29 +10,39 @@ import { UserService } from '../apis/user.service';
 })
 export class ForgotPassNewpassComponent implements OnInit {
 
-  user : User = new User()
-  constructor(private service : UserService,
-    private router : Router ) { }
-
-  ngOnInit(): void {
-    if(localStorage.getItem('token')){
-      this.router.navigate(['/agri/Acceuil'])
+  
+  constructor(private router: Router, private route: ActivatedRoute, private apis: UserService) { }
+  
+  token;
+  password;
+  isExpired = false;
+  user;
+  ngOnInit() {
+    this.token = this.route.snapshot.params['token'];
+    let body = { token: this.token }
+    this.apis.getUserByToken(body)
+      .subscribe((data: any) => {
+        this.user = data;
+      }, error => {
+        this.isExpired = true;
+      })
+  }
+  update_password() {
+    let body = {
+      token: this.token,
+      password: this.password,
+      email: this.user.email
     }
+    this.apis.resetPassword(body)
+      .subscribe((data: any) => {
+        this.router.navigate(['']);
+
+      }, error => {
+        this.isExpired = true;
+      })
+
   }
 
-
-  testauth() {
-this.service.login(this.user)
-.subscribe((data : any)=>{
-  console.log(data);
-  localStorage.setItem('token' , data.token)
-  localStorage.setItem('id' , data.id); 
   
-this.router.navigate(['/agri'])
-},(err)=>{
-
-})
-
-  } 
 
 }

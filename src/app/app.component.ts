@@ -12,10 +12,6 @@ export class AppComponent implements OnInit {
 
   constructor(private router: Router) { }
   ngOnInit() {
-    if (localStorage.token)
-      console.log("test")
-    //this.router.navigate(['/agri/Acceuil'])
-    else
-      this.router.navigate(['/login'])
+  
   }
 }
